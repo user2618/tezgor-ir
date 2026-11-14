@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>این صفحه در دست ساخت است</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #0f2f57;
+    --blue-deep: #0a1f3a;
+    --grid: rgba(255, 255, 255, .07);
+    --paper: #eaf2fb;
+    --muted: #a9bdd6;
+    --safety: #f5c400;
+    --ink: #0a1a30;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+    color: var(--paper);
+    background-color: var(--blue);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    line-height: 1.9;
+  }
+
+  /* تصویر گوشه صفحه: از پوشه images/ خوانده می‌شود */
+  .corner {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 96px;
+    height: 96px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,.25);
+    background: var(--blue-deep);
+    z-index: 5;
+  }
+
+  main {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 120px 20px 40px;
+  }
+  .sheet {
+    width: min(640px, 100%);
+    background: var(--blue-deep);
+    border: 2px solid rgba(255,255,255,.22);
+    border-radius: 6px;
+    padding: 0 0 36px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.35);
+  }
+  .tape {
+    height: 22px;
+    background: repeating-linear-gradient(-45deg, var(--safety) 0 18px, var(--ink) 18px 36px);
+  }
+  .body { padding: 36px 32px 0; text-align: center; }
+  h1 {
+    font-size: clamp(1.7rem, 5.2vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.5;
+  }
+  .lead {
+    margin: 14px auto 0;
+    max-width: 34ch;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .progress {
+    margin: 32px auto 0;
+    width: min(420px, 100%);
+    height: 14px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255,255,255,.06);
+  }
+  .progress span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: repeating-linear-gradient(-45deg, var(--safety) 0 10px, #d9ac00 10px 20px);
+    animation: build 2.4s cubic-bezier(.2,.7,.2,1) .3s forwards;
+  }
+  @keyframes build { to { width: 62%; } }
+
+  footer {
+    padding: 22px 20px 28px;
+    text-align: center;
+    background: var(--blue-deep);
+    border-top: 2px solid rgba(255,255,255,.18);
+    color: var(--muted);
+    font-size: .95rem;
+  }
+  footer p + p { margin-top: 6px; }
+  footer a {
+    color: var(--safety);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed currentColor;
+  }
+  footer a:hover { border-bottom-style: solid; }
+  a:focus-visible { outline: 3px solid var(--safety); outline-offset: 3px; border-radius: 3px; }
+  .handle { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+
+  @media (max-width: 520px) {
+    .corner { width: 64px; height: 64px; top: 10px; left: 10px; }
+    main { padding-top: 90px; }
+    .body { padding: 28px 20px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .progress span { animation: none; width: 62%; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- فایل تصویر را در پوشهٔ images با نام logo.png قرار دهید -->
+  <img class="corner" src="images/logo.png" alt="" onerror="this.style.display='none'">
+
+  <main>
+    <section class="sheet">
+      <div class="tape" aria-hidden="true"></div>
+      <div class="body">
+        <h1>این صفحه در دست ساخت است</h1>
+        <p class="lead">کارها در جریان است و به‌زودی با ظاهری تازه بازمی‌گردیم.</p>
+        <div class="progress" role="img" aria-label="پیشرفت ساخت: حدود ۶۲ درصد"><span></span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year">۲۰۲۶</span> — کلیه حقوق متعلق به سازنده است.</p>
+    <p>جهت خرید و ارتباط با مولف، به تلگرام مراجعه کنید:
+      <a class="handle" href="https://t.me/DomainAd" target="_blank" rel="noopener">@DomainAd</a>
+    </p>
+  </footer>
+
+<script>
+  try {
+    document.getElementById('year').textContent =
+      new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
+  } catch (e) {}
+</script>
+</body>
+</html>

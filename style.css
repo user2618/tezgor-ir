@@ -52,4 +52,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 @media(max-width:850px){.sample-layout{grid-template-columns:1fr;gap:34px}.sample-shot{justify-self:center}.panel-card{padding:26px 20px 24px}}
 @media(prefers-reduced-motion:reduce){.collapse,.bot-banner,.reveal{transition-duration:.01s}html{scroll-behavior:auto}.fx{scale:1!important}}
 .desktop-nav a[href="#why"]{color:var(--gold)}
+.brand-mark{width:44px;height:44px;background:none;box-shadow:none;overflow:hidden}
+.brand-mark img{display:block;width:100%;height:100%;border-radius:12px;object-fit:cover}
 .desktop-nav a[href="#why"]:hover{color:var(--gold)}

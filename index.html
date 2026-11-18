@@ -1,160 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>این صفحه در دست ساخت است</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --blue: #0f2f57;
-    --blue-deep: #0a1f3a;
-    --grid: rgba(255, 255, 255, .07);
-    --paper: #eaf2fb;
-    --muted: #a9bdd6;
-    --safety: #f5c400;
-    --ink: #0a1a30;
-  }
-  * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
-    color: var(--paper);
-    background-color: var(--blue);
-    background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
-      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-    background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    line-height: 1.9;
-  }
-
-  /* تصویر گوشه صفحه: از پوشه images/ خوانده می‌شود */
-  .corner {
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    width: 96px;
-    height: 96px;
-    border-radius: 14px;
-    object-fit: cover;
-    border: 2px solid rgba(255,255,255,.25);
-    background: var(--blue-deep);
-    z-index: 5;
-  }
-
-  main {
-    flex: 1;
-    display: grid;
-    place-items: center;
-    padding: 120px 20px 40px;
-  }
-  .sheet {
-    width: min(640px, 100%);
-    background: var(--blue-deep);
-    border: 2px solid rgba(255,255,255,.22);
-    border-radius: 6px;
-    padding: 0 0 36px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0,0,0,.35);
-  }
-  .tape {
-    height: 22px;
-    background: repeating-linear-gradient(-45deg, var(--safety) 0 18px, var(--ink) 18px 36px);
-  }
-  .body { padding: 36px 32px 0; text-align: center; }
-  h1 {
-    font-size: clamp(1.7rem, 5.2vw, 2.6rem);
-    font-weight: 800;
-    line-height: 1.5;
-  }
-  .lead {
-    margin: 14px auto 0;
-    max-width: 34ch;
-    color: var(--muted);
-    font-size: 1.05rem;
-  }
-  .progress {
-    margin: 32px auto 0;
-    width: min(420px, 100%);
-    height: 14px;
-    border: 2px solid rgba(255,255,255,.4);
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(255,255,255,.06);
-  }
-  .progress span {
-    display: block;
-    height: 100%;
-    width: 0;
-    background: repeating-linear-gradient(-45deg, var(--safety) 0 10px, #d9ac00 10px 20px);
-    animation: build 2.4s cubic-bezier(.2,.7,.2,1) .3s forwards;
-  }
-  @keyframes build { to { width: 62%; } }
-
-  footer {
-    padding: 22px 20px 28px;
-    text-align: center;
-    background: var(--blue-deep);
-    border-top: 2px solid rgba(255,255,255,.18);
-    color: var(--muted);
-    font-size: .95rem;
-  }
-  footer p + p { margin-top: 6px; }
-  footer a {
-    color: var(--safety);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 1px dashed currentColor;
-  }
-  footer a:hover { border-bottom-style: solid; }
-  a:focus-visible { outline: 3px solid var(--safety); outline-offset: 3px; border-radius: 3px; }
-  .handle { direction: ltr; unicode-bidi: isolate; display: inline-block; }
-
-  @media (max-width: 520px) {
-    .corner { width: 64px; height: 64px; top: 10px; left: 10px; }
-    main { padding-top: 90px; }
-    .body { padding: 28px 20px 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .progress span { animation: none; width: 62%; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="تزگور؛ رصد سریع و فیلترشده مزایدات و مناقصات سامانه ستاد ایران.">
+  <title>تزگور | رصد هوشمند ستاد ایران</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="watermark" aria-hidden="true">INFORMATION IS POWER</div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="تزگور">
+        <span class="brand-mark"><i class="fa-solid fa-bolt"></i></span>
+        <span>تزگور <b>TezGor</b></span>
+      </a>
+      <nav class="desktop-nav" aria-label="ناوبری اصلی">
+        <a href="#why">چرا تزگور؟</a><a href="#services">سرویس‌ها</a><a href="#faq">سؤالات متداول</a>
+      </nav>
+      <a class="button button-small button-primary" href="https://t.me/TezGorBot" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> ورود به ربات</a>
+    </div>
+  </header>
 
-  <!-- فایل تصویر را در پوشهٔ images با نام logo.png قرار دهید -->
-  <img class="corner" src="images/logo.png" alt="" onerror="this.style.display='none'">
-
-  <main>
-    <section class="sheet">
-      <div class="tape" aria-hidden="true"></div>
-      <div class="body">
-        <h1>این صفحه در دست ساخت است</h1>
-        <p class="lead">کارها در جریان است و به‌زودی با ظاهری تازه بازمی‌گردیم.</p>
-        <div class="progress" role="img" aria-label="پیشرفت ساخت: حدود ۶۲ درصد"><span></span></div>
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><i class="fa-solid fa-crosshairs"></i> رصد هوشمند فرصت‌های ستاد ایران</div>
+        <h1>فرصت‌های مهم را <span>زود ببین</span>، قبل از اینکه از دست بروند.</h1>
+        <p class="lead">دستگاه‌های اجرایی و عمومی، معاملات خود را در سامانه تدارکات الکترونیکی دولت، یعنی <strong>setadiran.ir</strong>، منتشر می‌کنند. تزگور آگهی‌های مرتبط را بر اساس شهر، استان و نوع معامله سریع‌تر جلوی چشم شما می‌آورد.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://t.me/TezGorBot" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> شروع با @TezGorBot</a>
+          <a class="button button-ghost" href="#why"><i class="fa-solid fa-arrow-down"></i> آشنایی با امکانات</a>
+        </div>
+        <div class="trust-row"><span><i class="fa-solid fa-filter"></i> فیلتر بر اساس موقعیت</span><span><i class="fa-solid fa-bell"></i> اعلان سریع</span><span><i class="fa-solid fa-arrow-up-right-from-square"></i> لینک مستقیم آگهی</span></div>
+      </div>
+      <div class="hero-visual reveal reveal-delay">
+        <div class="visual-frame"><img src="images/bot-preview.webp" alt="پیش‌نمایش ربات تلگرامی تزگور"></div>
+        <div class="floating-note"><i class="fa-solid fa-bolt"></i><span><b>یک کلیک تا جزئیات</b><small>لینک آگهی و مستندات را مستقیم باز کنید</small></span></div>
       </div>
     </section>
+
+    <section class="stats-band"><div class="container stats"><div><b>۱</b><span>منبع متمرکز برای رصد آگهی‌ها</span></div><div><b>۳</b><span>فیلتر کلیدی: شهر، استان، نوع معامله</span></div><div><b>۲۴/۷</b><span>آمادگی برای دیدن فرصت‌های تازه</span></div></div></section>
+
+    <section id="why" class="section container">
+      <div class="section-heading reveal"><span class="kicker">مسئله را ساده کنیم</span><h2>جستجوی دستی، زمان‌بر و پرریسک است</h2><p>وقتی صدها آگهی در شهرها و دسته‌بندی‌های مختلف منتشر می‌شود، چند ساعت تأخیر می‌تواند به معنی از دست رفتن یک فرصت مناسب باشد.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card reveal"><div class="icon red"><i class="fa-solid fa-clock"></i></div><h3>صرفه‌جویی در زمان</h3><p>به‌جای بررسی روزانه صفحات پراکنده، پیام‌های مرتبط را در یک مسیر مشخص دریافت کنید.</p></article>
+        <article class="feature-card reveal reveal-delay"><div class="icon blue"><i class="fa-solid fa-location-dot"></i></div><h3>فیلتر دقیق‌تر</h3><p>استان، شهر و نوع آگهی مورد نیازتان را انتخاب کنید تا تمرکزتان روی موارد قابل اقدام بماند.</p></article>
+        <article class="feature-card reveal reveal-delay-2"><div class="icon gold"><i class="fa-solid fa-file-arrow-up"></i></div><h3>دسترسی به جزئیات</h3><p>با کلیک روی لینک ارسال‌شده توسط ربات، جزئیات، شرایط و مستندات آگهی را سریع بررسی کنید.</p></article>
+      </div>
+    </section>
+
+    <section id="services" class="section section-soft"><div class="container service-layout"><div class="service-copy reveal"><span class="kicker">اکوسیستم تزگور</span><h2>سرویسی برای هر مرحله از رصد</h2><p>از اعلان‌های مزایده تا پوشش مناقصات دولتی، مسیر توسعه تزگور برای کم‌کردن اصطکاک جستجو طراحی شده است.</p><div class="service-list"><div><i class="fa-brands fa-telegram"></i><span><b>ربات مزایدات ستاد</b><small>فعال در تلگرام؛ برای شروع روی دکمه بزنید.</small></span><a href="https://t.me/TezGorBot" target="_blank" rel="noopener" aria-label="باز کردن ربات تلگرام"><i class="fa-solid fa-arrow-up-left-from-circle"></i></a></div><div><i class="fa-solid fa-message"></i><span><b>نسخه پیام‌رسان بله</b><small>در حال توسعه برای دسترسی آسان‌تر کاربران ایرانی.</small></span><em>به‌زودی</em></div><div><i class="fa-solid fa-file-contract"></i><span><b>ربات مناقصات دولتی</b><small>اعلان پروژه‌های عمرانی، ساختمانی و پیمانکاری.</small></span><em>به‌زودی</em></div></div></div><div class="service-image reveal reveal-delay"><img src="images/inspection.webp" alt="تصویر نمادین بررسی دقیق فرصت‌ها"><div class="image-caption"><i class="fa-solid fa-magnifying-glass"></i> دقیق ببین، سریع تصمیم بگیر</div></div></div></section>
+
+    <section id="faq" class="section container"><div class="section-heading reveal"><span class="kicker">پاسخ‌های کوتاه</span><h2>سؤالات متداول</h2></div><div class="faq-list"><details class="reveal"><summary>چرا آگهی‌ها در سامانه ستاد ایران منتشر می‌شوند؟ <i class="fa-solid fa-chevron-down"></i></summary><p>بر اساس مقررات معاملات دولتی و برگزاری مناقصات و مزایدات، بسیاری از دستگاه‌های اجرایی و نهادهای عمومی باید فرایندهای معاملاتی خود را در سامانه تدارکات الکترونیکی دولت ثبت و منتشر کنند. تزگور برای رصد ساده‌تر همین اطلاعات طراحی شده است.</p></details><details class="reveal"><summary>آیا برای دیدن اطلاعات اولیه باید در سامانه ستاد ثبت‌نام کنم؟ <i class="fa-solid fa-chevron-down"></i></summary><p>تزگور لینک آگهی و اطلاعات منتشرشده را برای بررسی اولیه در اختیار شما می‌گذارد. شرایط نهایی هر معامله را از منبع رسمی و مطابق الزامات همان آگهی بررسی کنید.</p></details><details class="reveal"><summary>چطور استان یا نوع آگهی را انتخاب کنم؟ <i class="fa-solid fa-chevron-down"></i></summary><p>پس از ورود به ربات، از منوی تنظیمات، استان‌ها و دسته‌بندی‌های مورد نیازتان را انتخاب کنید تا اعلان‌ها مرتبط‌تر شوند.</p></details></div></section>
   </main>
-
-  <footer>
-    <p>© <span id="year">۲۰۲۶</span> — کلیه حقوق متعلق به سازنده است.</p>
-    <p>جهت خرید و ارتباط با مولف، به تلگرام مراجعه کنید:
-      <a class="handle" href="https://t.me/DomainAd" target="_blank" rel="noopener">@DomainAd</a>
-    </p>
-  </footer>
-
-<script>
-  try {
-    document.getElementById('year').textContent =
-      new Date().toLocaleDateString('fa-IR', { year: 'numeric' });
-  } catch (e) {}
-</script>
+  <div class="toast" id="toast" role="status"><i class="fa-solid fa-bell"></i><span></span></div>
+  <footer><div class="container footer-wrap"><p><b>تزگور TezGor</b> | رصد سریع، شکار هوشمند فرصت‌های معاملاتی</p><p class="muted">اطلاعات بهتر، تصمیم سریع‌تر. <a href="https://t.me/TezGorBot" target="_blank" rel="noopener">@TezGorBot</a></p></div></footer>
+  <script src="app.js"></script>
 </body>
 </html>

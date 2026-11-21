@@ -6,6 +6,7 @@
   <title>تزگر | رصد هوشمند ستاد ایران</title>
   <meta name="description" content="تزگر؛ رصد سریع و فیلترشده مزایدات و مناقصات سامانه ستاد ایران.">
 
+
   <!-- آیکون‌ها -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
@@ -13,11 +14,60 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#f97316">
 
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== ارتباط با ما ===== */
+    .contact-menu{position:relative;display:inline-flex;align-items:center;flex-shrink:0}
+    .contact-trigger{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;font-size:.95rem;
+      color:#7c2d12;background:rgba(249,115,22,.10);border:1px solid rgba(249,115,22,.28);border-radius:999px;
+      padding:9px 16px;cursor:pointer;transition:background .25s,border-color .25s,box-shadow .25s,transform .25s}
+    .contact-trigger:hover,.contact-menu.open .contact-trigger,.contact-menu:focus-within .contact-trigger{
+      background:rgba(249,115,22,.18);border-color:#f97316;box-shadow:0 6px 18px rgba(249,115,22,.22)}
+    .contact-caret{font-size:.7rem;transition:transform .35s ease}
+    .contact-menu:hover .contact-caret,.contact-menu.open .contact-caret,.contact-menu:focus-within .contact-caret{transform:rotate(180deg)}
+
+    .contact-drop{position:absolute;top:100%;left:0;z-index:1000;min-width:280px;margin-top:12px;padding:10px;
+      background:#fff;color:#1f2937;border:1px solid rgba(15,23,42,.08);border-radius:18px;
+      box-shadow:0 22px 50px -12px rgba(15,23,42,.30),0 6px 16px rgba(15,23,42,.08);
+      opacity:0;visibility:hidden;pointer-events:none;transform:translateY(18px) scale(.97);transform-origin:top left;
+      transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),visibility 0s linear .55s}
+    /* پل نامرئی تا با رفتن ماوس از دکمه به کادر، منو نبندد */
+    .contact-drop::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+    .contact-menu:hover .contact-drop,.contact-menu.open .contact-drop,.contact-menu:focus-within .contact-drop{
+      opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);
+      transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),visibility 0s}
+
+    .contact-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;text-decoration:none;color:inherit;
+      transition:background .25s,transform .25s}
+    .contact-item+.contact-item{margin-top:4px}
+    .contact-item:hover{background:#fff7ed;transform:translateX(3px)}
+    .ci-ico{flex:0 0 40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;color:#fff}
+    .ci-ico.tg{background:linear-gradient(135deg,#2aabee,#229ed9)}
+    .ci-ico.ml{background:linear-gradient(135deg,#fb923c,#f97316)}
+    .ci-txt{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.35;text-align:left}
+    .ci-txt small{font-size:.72rem;color:#6b7280;letter-spacing:.04em;text-transform:uppercase}
+    .ci-txt b{font-size:.92rem;font-weight:700;color:#111827;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .ci-go{font-size:.8rem;color:#9ca3af;transition:color .25s,transform .25s}
+    .contact-item:hover .ci-go{color:#f97316;transform:translate(2px,-2px)}
+    .mail-text{user-select:all;-webkit-user-select:all;cursor:text}
+    .copy-mail{flex:0 0 auto;width:36px;height:36px;border-radius:10px;border:1px solid #fed7aa;background:#fff;color:#ea580c;
+      cursor:pointer;display:grid;place-items:center;font-size:1rem;transition:background .25s,color .25s,transform .2s}
+    .copy-mail:hover{background:#f97316;color:#fff}
+    .copy-mail:active{transform:scale(.9)}
+    .copy-mail.done{background:#16a34a;border-color:#16a34a;color:#fff}
+
+    @media (max-width:720px){
+      .contact-trigger{padding:9px 11px}
+      .contact-trigger span,.contact-caret{display:none}
+      .contact-drop{min-width:260px;max-width:calc(100vw - 24px)}
+    }
+    @media (prefers-reduced-motion:reduce){.contact-drop,.contact-caret{transition:none}}
+  </style>
 </head>
 <body>
   <div class="watermark" aria-hidden="true">INFORMATION IS POWER</div>
@@ -25,15 +75,33 @@
     <div class="container nav-wrap">
       <a class="brand" href="#top" aria-label="تزگر">
         <span class="brand-mark"><img src="images/logo.webp" alt="" width="44" height="44"></span>
-        <span>تزگُر <b>TezGor</b></span>
+        <span>تِزگُر <b>TezGor</b></span>
       </a>
       <nav class="desktop-nav" id="mainNav" aria-label="ناوبری اصلی">
         <a href="#top" data-home>صفحه اصلی</a><a href="#auction" data-panel="auction">مزایده</a><a href="#tender" data-panel="tender">مناقصه</a><a href="#plans" data-panel="plans">پلن‌ها</a><a href="#why">چرا تزگُر؟</a><a href="#services">سرویس‌ها</a><a href="#faq">سؤالات متداول</a>
       </nav>
       <a class="button button-small button-primary" href="https://t.me/TezGorBot" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> ورود به ربات</a>
+      <div class="contact-menu" id="contactMenu">
+        <button type="button" class="contact-trigger" id="contactTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="contactDrop">
+          <i class="fa-solid fa-headset"></i><span>ارتباط با ما</span><i class="fa-solid fa-chevron-down contact-caret"></i>
+        </button>
+        <div class="contact-drop" id="contactDrop" role="menu" dir="ltr">
+          <a class="contact-item" role="menuitem" href="https://t.me/DomainAd" target="_blank" rel="noopener">
+            <span class="ci-ico tg"><i class="fa-brands fa-telegram"></i></span>
+            <span class="ci-txt"><small>Telegram</small><b>t.me/DomainAd</b></span>
+            <i class="fa-solid fa-arrow-up-right-from-square ci-go"></i>
+          </a>
+          <div class="contact-item contact-mail" role="menuitem">
+            <span class="ci-ico ml"><i class="fa-solid fa-envelope"></i></span>
+            <span class="ci-txt"><small>Email</small><b class="mail-text" id="mailText">nrply.acounts@gmail.com</b></span>
+            <button type="button" class="copy-mail" id="copyMail" aria-label="کپی ایمیل" title="کپی ایمیل"><i class="fa-regular fa-copy"></i></button>
+          </div>
+        </div>
+      </div>
       <button class="menu-toggle" id="menuToggle" aria-label="باز و بسته کردن منو" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
     </div>
   </header>
+
 
   <main id="top">
     <section class="hero container">
@@ -53,10 +121,13 @@
       </div>
     </section>
 
+
     <section class="stats-band"><div class="container stats"><div><b>۱</b><span>منبع متمرکز برای رصد آگهی‌ها</span></div><div><b>۳</b><span>فیلتر کلیدی: شهر، استان، نوع معامله</span></div><div><b>۲۴/۷</b><span>آمادگی برای دیدن فرصت‌های تازه</span></div></div></section>
+
 
     
     <section class="info-area container" id="info-area" aria-live="polite"><article class="info-panel collapse" id="auction"><div class="collapse-in"><div class="panel-card"><button class="close-btn" data-close type="button" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button><h2>مزایده و مزایدات</h2><p>مزایده روشی برای فروش کالا یا مال است که در آن مال به کسی می‌رسد که بالاترین قیمت را پیشنهاد کند. فروشنده با رقابت خریداران به قیمت بهتر می‌رسد و خریدار هم فرصت دارد مال ارزشمندی را با قیمت مناسب بخرد.</p><p>برگزاری مزایده معمولاً با تعیین اقلام و نوع مزایده شروع می‌شود. بعد اسناد آماده و آگهی منتشر می‌شود، پیشنهادها بررسی می‌شوند، برنده اعلام می‌گردد و کار با عقد قرارداد یا انتقال مال تمام می‌شود.</p><div class="collapse more"><div class="collapse-in"><h3>مزایده به چه کاری می‌آید؟</h3><p>مزایده یکی از راه‌های تبدیل مال به پول و تسویه بدهی است. وقتی حکم پرداخت بدهی صادر شده و بدهکار نمی‌پردازد، مال او توقیف و با مزایده فروخته می‌شود تا طلب بستانکار پرداخت شود. سازمان‌ها و شرکت‌ها هم اموال مازاد خود را از همین راه می‌فروشند.</p><h3>انواع مزایده</h3><ul class="plain"><li><b>عمومی:</b> همه علاقه‌مندان می‌توانند شرکت کنند</li><li><b>خصوصی:</b> فقط افراد دعوت‌شده حضور دارند</li><li><b>اختیاری:</b> مالک بدون حکم قضایی و به میل خود مال را می‌فروشد</li><li><b>اجباری:</b> به حکم مرجع قضایی و برای وصول طلب برگزار می‌شود</li><li><b>دولتی:</b> دستگاه‌های دولتی اموال مازاد خود را عرضه می‌کنند</li><li><b>هلندی:</b> قیمت از رقمی بالا شروع می‌شود و کم می‌شود تا نخستین خریدار بپذیرد</li><li><b>معکوس:</b> خریدار نیاز خود را اعلام می‌کند و فروشندگان برای ارائه کمترین قیمت رقابت می‌کنند</li><li><b>ترکیبی:</b> چند قلم کالا در قالب یک بسته عرضه می‌شود</li></ul><h3>انواع مزایده بر اساس نوع مال</h3><ul class="plain"><li><b>منقول:</b> اموال قابل جابه‌جایی مانند خودرو و تجهیزات</li><li><b>غیرمنقول:</b> زمین، آپارتمان و ساختمان</li><li><b>تملیکی:</b> اموالی که به‌دلیل جریمه، ضبط، مصادره یا بدهی به دولت منتقل شده است</li></ul><p>مزایده می‌تواند حضوری، آنلاین یا الکترونیکی باشد. در ایران مزایده‌های الکترونیکی دولتی عمدتاً در سامانه ستاد ایران منتشر می‌شوند.</p><h3>اصطلاحات پرکاربرد</h3><ul class="plain"><li><b>مزایده‌گزار:</b> فروشنده یا مرجع برگزارکننده</li><li><b>مزایده‌گر:</b> شخص حقیقی یا حقوقی که پیشنهاد قیمت می‌دهد</li><li><b>قیمت پایه:</b> کمترین مبلغی که پیشنهادها از آن شروع می‌شود و معمولاً با نظر کارشناس تعیین می‌شود</li><li><b>اسناد مزایده:</b> دعوت‌نامه، شرایط شرکت، فرم پیشنهاد، تضمین و مشخصات فنی</li><li><b>ترک مزایده:</b> توقف فرایند پیش از واگذاری به دلایل موجه، مثل نبود بودجه</li></ul><h3>چطور شرکت کنیم؟</h3><p>آگهی را از منبع معتبر بخوانید، مدارک و سپرده را طبق همان آگهی آماده کنید و در زمان و مکان یا سامانه تعیین‌شده پیشنهاد بدهید. هر مزایده به سه رکن نیاز دارد: مزایده‌گزار، مزایده‌گر و مال مورد فروش. اگر در آگهی مغایرت جدی وجود داشته باشد، ممکن است مزایده باطل شود، پس شرایط هر آگهی را جداگانه و دقیق بخوانید.</p></div></div><button class="button button-ghost more-btn" data-more type="button"><span>ادامه مطلب</span> <i class="fa-solid fa-chevron-down"></i></button></div></div></article><article class="info-panel collapse" id="tender"><div class="collapse-in"><div class="panel-card"><button class="close-btn" data-close type="button" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button><h2>مناقصه و مناقصات</h2><p>مناقصه روشی رقابتی برای انتخاب پیمانکار یا تأمین‌کننده است. کارفرما نیاز خود را اعلام می‌کند و از میان پیشنهادهای رسیده، گزینه‌ای را انتخاب می‌کند که از نظر کیفیت و قیمت بهترین ترکیب را داشته باشد.</p><p>معاملات به کوچک، متوسط و بزرگ تقسیم می‌شوند و روش برگزاری بسته به آن فرق می‌کند. مراحل کار از تأمین اعتبار و تعیین روش برگزاری شروع می‌شود و با تهیه اسناد، ارزیابی صلاحیت شرکت‌کنندگان، فراخوان، بررسی پیشنهادها، انتخاب برنده و انعقاد قرارداد ادامه پیدا می‌کند.</p><div class="collapse more"><div class="collapse-in"><h3>انواع مناقصه</h3><ul class="plain"><li><b>یک‌مرحله‌ای:</b> پیشنهادها در یک جلسه باز می‌شود و برنده همان‌جا مشخص می‌شود</li><li><b>دو‌مرحله‌ای:</b> ابتدا پیشنهاد فنی و بازرگانی ارزیابی می‌شود و بعد نوبت پیشنهاد قیمت است</li><li><b>عمومی:</b> فراخوان برای همه واجدان شرایط منتشر می‌شود</li><li><b>محدود:</b> فقط چند شرکت دعوت می‌شوند و کارفرما باید دلیل این انتخاب را مستند کند</li></ul><h3>تفاوت مناقصه و مزایده</h3><p>در مناقصه کارفرما خریدار است و می‌خواهد کار یا کالا را با کمترین قیمت و بهترین کیفیت بگیرد. در مزایده صاحب مال فروشنده است و بالاترین قیمت را می‌خواهد. یعنی جای خریدار و فروشنده عوض می‌شود.</p><h3>اسناد مناقصه</h3><p>این اسناد را کارفرما بر اساس نیاز پروژه آماده می‌کند و ممکن است رایگان یا با پرداخت هزینه در اختیار متقاضیان قرار بگیرد. معمولاً شامل شرح کار، نوع و مبلغ تضمین شرکت، مهلت تحویل پیشنهاد و زمان بازگشایی پاکت‌ها، تضمین انجام تعهد، پیش‌پرداخت، مشخصات فنی و بازرگانی، معیارهای ارزیابی کیفی و شرایط عمومی و خصوصی است.</p><h3>چطور شرکت کنیم و برنده شویم؟</h3><p>اول باید از آگهی، شرایط و مهلت‌ها باخبر شوید. آگهی‌های دولتی را از سامانه ستاد ایران یا منابع رسمی دنبال کنید. رصد مناقصات در تزگر در دست توسعه است. برای برنده شدن، توان فنی، مالی، مدیریتی و تجهیزاتی شرکت اهمیت دارد و دسترسی سریع به آگهی‌ها هم شانس شما را بالا می‌برد.</p><h3>اهمیت مناقصه‌ها</h3><p>بخش بزرگی از پروژه‌های عمرانی و زیربنایی و خرید کالا و خدمات در ایران و بسیاری از کشورها از راه مناقصه انجام می‌شود. به همین دلیل، دسترسی به آگهی‌های هر استان برای پیمانکاران و تأمین‌کنندگان مزیت رقابتی است.</p></div></div><button class="button button-ghost more-btn" data-more type="button"><span>ادامه مطلب</span> <i class="fa-solid fa-chevron-down"></i></button></div></div></article><article class="info-panel collapse" id="plans"><div class="collapse-in"><div class="panel-card"><button class="close-btn" data-close type="button" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button><h2>پلن‌ها و تعرفه</h2><p>لطفاً تعرفه و پلن‌ها را در <a class="inline-link" href="https://t.me/TezGorBot" target="_blank" rel="noopener">ربات TezGor</a> مشاهده کنید.</p><a class="button button-primary" href="https://t.me/TezGorBot" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> باز کردن ربات</a></div></div></article></section>
+
 
     <section id="why" class="section container">
       <div class="section-heading reveal"><span class="kicker">مسئله را ساده کنیم</span><h2>جستجوی دستی، زمان‌بر و پرریسک است</h2><p>وقتی صدها آگهی در شهرها و دسته‌بندی‌های مختلف منتشر می‌شود، چند ساعت تأخیر می‌تواند به معنی از دست رفتن یک فرصت مناسب باشد.</p></div>
@@ -67,15 +138,40 @@
       </div>
     </section>
 
+
     <section id="sample" class="section container sample-layout"><div class="sample-copy reveal"><h2>پیام دریافتی شما چه شکلی است؟</h2><p>هر آگهی با اطلاعات کلیدی در پیام‌رسان می‌رسد تا بدون جستجوی دستی بتوانید تصمیم اولیه بگیرید.</p><ul class="plain"><li>عنوان، نوع ملک یا کالا، استان و شهر</li><li>مرجع برگزارکننده و قیمت پایه</li><li>زمان شروع و مهلت ارائه پیشنهاد</li><li>لینک مستقیم جزئیات و مستندات آگهی</li></ul></div><figure class="sample-shot reveal reveal-delay"><img src="images/sample-message.webp" alt="نمونه پیام آگهی مزایده در تلگرام" loading="lazy"><figcaption>نمونه پیام دریافتی در تلگرام (بخش‌هایی از تصویر عمداً محو شده است)</figcaption></figure></section>
 
+
     <section id="services" class="section section-soft"><div class="container service-layout"><div class="service-copy reveal"><span class="kicker">اکوسیستم تزگر</span><h2>سرویسی برای هر مرحله از رصد</h2><p>از اعلان‌های مزایده تا پوشش مناقصات دولتی، مسیر توسعه تزگر برای کم‌کردن اصطکاک جستجو طراحی شده است.</p><div class="service-list"><a class="service-item service-link" id="botCard" href="https://t.me/TezGorBot" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i><span><b>ربات مزایدات ستاد</b><small>فعال در تلگرام؛ برای شروع روی دکمه بزنید.</small></span><i class="fa-solid fa-arrow-up-right-from-square go"></i></a><div class="service-item"><i class="fa-solid fa-message"></i><span><b>نسخه پیام‌رسان بله</b><small>در حال توسعه برای دسترسی آسان‌تر کاربران ایرانی.</small></span><em>به‌زودی</em></div><div class="service-item"><i class="fa-solid fa-file-contract"></i><span><b>ربات مناقصات دولتی</b><small>اعلان پروژه‌های عمرانی، ساختمانی و پیمانکاری.</small></span><em>به‌زودی</em></div></div></div><div class="service-image reveal reveal-delay"><img src="images/inspection.webp" alt="تصویر نمادین بررسی دقیق فرصت‌ها"><div class="image-caption"><i class="fa-solid fa-magnifying-glass"></i> دقیق ببین، سریع تصمیم بگیر</div></div></div></section>
+
 
     <section id="faq" class="section container"><div class="section-heading reveal"><span class="kicker">پاسخ‌های کوتاه</span><h2>سؤالات متداول</h2></div><div class="faq-list"><details class="reveal"><summary>۱. ربات تزگر چه خدماتی ارائه می‌دهد؟ <i class="fa-solid fa-chevron-down"></i></summary><p>تزگر آگهی‌های مزایده املاک و خودرو را از سامانه ستاد ایران رصد کرده و متناسب با فیلترهای انتخابی شما، آن‌ها را از طریق پیام‌رسان ارسال می‌کند. مزیت اصلی تزگر استخراج لینک مستقیم دریافت مستندات آگهی و ارسال آن در تلگرام شماست.</p></details><details class="reveal"><summary>۲. آیا تمام مزایده‌های کشور در ربات نمایش داده می‌شوند؟ <i class="fa-solid fa-chevron-down"></i></summary><p>تزگر آگهی‌های منتشرشده و قابل دسترس در سامانه ستاد ایران را رصد می‌کند. در صورتی که آگهی دچار اشکال فنی یا محدودیت دسترسی نباشد، در ربات ارسال می‌شود.</p></details><details class="reveal"><summary>۳. آگهی‌ها هر چند وقت یک‌بار ارسال می‌شوند؟ <i class="fa-solid fa-chevron-down"></i></summary><p>ربات به‌صورت دوره‌ای سامانه ستاد را رصد می‌کند و آگهی‌های جدید و مرتبط با فیلترهای انتخابی شما را پس از شناسایی، به‌صورت روزانه از طریق پیام‌رسان ارسال می‌کند.</p></details><details class="reveal"><summary>۴. آیا امکان انتخاب چند استان به‌صورت هم‌زمان وجود دارد؟ <i class="fa-solid fa-chevron-down"></i></summary><p>بله. می‌توانید یک یا چند استان را انتخاب کنید تا فقط آگهی‌های مربوط به مناطق موردنظر برای شما ارسال شوند.</p></details><details class="reveal"><summary>۵. آیا می‌توانم فقط آگهی‌های یک نوع خاص را دریافت کنم؟ <i class="fa-solid fa-chevron-down"></i></summary><p>بله. با انتخاب دسته‌بندی موردنظر، مانند املاک یا خودرو، دریافت آگهی‌ها را متناسب با حوزه فعالیت خود محدود می‌کنید.</p></details><details class="reveal"><summary>۶. آیا پس از تغییر فیلترها، آگهی‌های قبلی دوباره ارسال می‌شوند؟ <i class="fa-solid fa-chevron-down"></i></summary><p>خیر. هدف ربات اطلاع‌رسانی آگهی‌های جدید و مرتبط با فیلترهای انتخابی شماست و تغییر فیلترها به‌معنای ارسال مجدد تمام آگهی‌های قبلی نیست.</p></details><details class="reveal"><summary>۷. اشتراک ربات چه مدت اعتبار دارد؟ <i class="fa-solid fa-chevron-down"></i></summary><p>مدت اعتبار به پلن خریداری‌شده بستگی دارد. پس از پایان اعتبار اشتراک، برای ادامه دریافت آگهی‌ها باید اشتراک خود را تمدید کنید.</p></details><details class="reveal"><summary>۸. چگونه اشتراک ربات را فعال کنم؟ <i class="fa-solid fa-chevron-down"></i></summary><p>پس از ورود به ربات، پلن موردنظر خود را انتخاب کنید، مبلغ اشتراک را پرداخت کرده و تصویر رسید پرداخت را ارسال کنید. پس از بررسی و تأیید، اشتراک شما فعال خواهد شد.</p></details><details class="reveal"><summary>۹. آیا امکان مشاهده جزئیات و اسناد مزایده وجود دارد؟ <i class="fa-solid fa-chevron-down"></i></summary><p>بله. در آگهی‌های ارسالی، لینک دسترسی به صفحه مربوط به مزایده قرار داده می‌شود تا بتوانید جزئیات، شرایط و اسناد منتشرشده را بررسی کنید.</p></details><details class="reveal"><summary>۱۰. آیا اطلاعات آگهی‌های تزگر معتبر و رسمی هستند؟ <i class="fa-solid fa-chevron-down"></i></summary><p>اطلاعات آگهی‌ها از سامانه ستاد ایران دریافت می‌شوند. با این حال، برای تصمیم‌گیری، شرکت در مزایده یا پرداخت وجه، حتماً آخرین اطلاعات و شرایط را از منبع رسمی بررسی کنید.</p></details><details class="reveal"><summary>۱۱. اگر آگهی موردنظرم را دریافت نکردم چه کار کنم؟ <i class="fa-solid fa-chevron-down"></i></summary><p>ابتدا استان‌ها و دسته‌بندی‌های انتخابی خود را بررسی کنید. در صورت ادامه مشکل، از طریق بخش پشتیبانی ربات با ما در ارتباط باشید.</p></details></div></section>
   </main>
   <div class="bot-banner" id="botBanner" role="status"><i class="fa-brands fa-telegram"></i><span>آدرس ربات: <a href="https://t.me/TezGorBot" target="_blank" rel="noopener" dir="ltr">t.me/TezGorBot</a></span><button type="button" id="copyBot">کپی آدرس</button><button type="button" class="x" id="closeBanner" aria-label="بستن"><i class="fa-solid fa-xmark"></i></button></div>
   <div class="toast" id="toast" role="status"><i class="fa-solid fa-bell"></i><span></span></div>
   <footer><div class="container footer-wrap"><p><b>تزگر TezGor</b> | رصد سریع، شکار هوشمند فرصت‌های معاملاتی</p><p class="muted">اطلاعات بهتر، تصمیم سریع‌تر. <a href="https://t.me/TezGorBot" target="_blank" rel="noopener">@TezGorBot</a></p></div></footer>
+  <script>
+  (function(){
+    var menu=document.getElementById('contactMenu'),
+        trg=document.getElementById('contactTrigger'),
+        btn=document.getElementById('copyMail'),
+        mail=document.getElementById('mailText');
+    if(!menu||!trg) return;
+    function setOpen(v){menu.classList.toggle('open',v);trg.setAttribute('aria-expanded',v?'true':'false');}
+    trg.addEventListener('click',function(e){e.stopPropagation();setOpen(!menu.classList.contains('open'));});
+    document.addEventListener('click',function(e){if(!menu.contains(e.target)) setOpen(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape') setOpen(false);});
+    function fallbackCopy(t){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';
+      document.body.appendChild(a);a.select();try{document.execCommand('copy');}catch(_){}document.body.removeChild(a);}
+    if(btn&&mail) btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      var t=mail.textContent.trim();
+      (navigator.clipboard&&window.isSecureContext?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){fallbackCopy(t);});
+      btn.classList.add('done');btn.innerHTML='<i class="fa-solid fa-check"></i>';
+      setTimeout(function(){btn.classList.remove('done');btn.innerHTML='<i class="fa-regular fa-copy"></i>';},1600);
+    });
+  })();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
